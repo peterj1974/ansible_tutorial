@@ -18,6 +18,16 @@
       update_cache: yes
     when: ansible_distribution == "Ubuntu"
 
+- hosts: all
+  become: true
+  tasks:
+
+  - name: add ssh key for simone
+    tags: always
+    authorized_key:
+      user: simone
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEerjSEhdSYrYRw/TklNe5QfntfbwP12AQ1wrQsR8uEi ansible" 
+
 - hosts: workstations
   become: true
   tasks:
